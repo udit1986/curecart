@@ -1,0 +1,217 @@
+// SASS variable for media query breakpoint
+$breakpoint-desktop: 992px;
+
+// Resetting default styles
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+// Fix for jumping arrows
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
+}
+
+.carousel {
+  position: relative;
+}
+
+// Carousel slides
+.carousel__slide {
+  margin-right: auto;
+  margin-left: auto;
+  display: none;
+  // max-width: 900px;
+  list-style-type: none;
+  text-align: center;
+
+  // @media (max-width: 991px) {
+  //   padding-right: 60px;
+  //   padding-left: 60px;
+  // }
+
+  &--active {
+    display: block;
+  }
+}
+
+// Content of slides
+.carousel-slide__content {
+  margin-bottom: 19px;
+  font-family: 'Open Sans', 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+
+  @media (max-width: $breakpoint-desktop) {
+    font-size: 18px;
+  }
+}
+
+.carousel-slide__author,
+.carousel-slide__source {
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 14px;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: 16px;
+  }
+}
+
+.carousel-slide__source {
+  font-style: italic;
+  color: #888;
+}
+
+// Carousel arrows
+.carousel__arrow {
+  position: absolute;
+  top: 45%;
+  display: block;
+  color: #111;
+  cursor: pointer;
+  opacity: .75;
+  transform: translateY(-50%);
+  transition: opacity .15s cubic-bezier(.4, 0, 1, 1);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    opacity: .5;
+  }
+
+  &--left {
+    left: 32px;
+    z-index: 1;
+  }
+
+  &--right {
+    right: 32px;
+  }
+}
+
+// Carousel indicators
+.carousel__indicators {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+
+  li {
+    &:nth-of-type(n + 2) {
+      margin-left: 9px;
+    }
+  }
+}
+
+.carousel__indicator {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #111;
+  cursor: pointer;
+  opacity: .15;
+  transition: opacity .15s cubic-bezier(.4, 0, 1, 1);
+
+  &:hover {
+    opacity: .5;
+  }
+
+  &--active {
+
+    &,
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
+
+.scroll-menu-container{
+  display: flex;
+  background-color: $background-color;
+  margin: 2rem 0rem;
+}
+.carousel-card-menu-title-item {
+  background-image: url(https://rukminim1.flixcart.com/fk-p-flap/278/278/image/05d9d0065ee84cc1.jpg?q=90);
+  background-position: 0px bottom;
+  width: 220px;
+  background-repeat: no-repeat;
+  .item-title{
+    text-align: center;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px 10px 124px;
+  }
+}
+
+.scrollContainerWidth {
+  width: calc(100% - 230px);
+}
+.carousel-card-menu-item {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+}
+
+
+.carousel-card-menu-item-anchor {
+  padding: 25px 15px;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  max-height: 366px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+
+  .item-name {
+    padding: 10px 10px;
+    font-size: 1.5rem;
+  }
+  .item-price {
+    font-size: 1.25rem;
+    color: #388e3c;
+  }
+}
+
+.carousel-card-menu-item-img {
+  opacity: 1;
+  transform: scale(1);
+  transition: all .3s ease-in-out;
+  height: 180px;
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+}
+.react-horizontal-scrolling-menu--wrapper{
+  position: relative;
+}
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.react-horizontal-scrolling-menu--scroll-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.right-arrow-nav {
+  right:0;
+}
+
+.left-arrow-nav {
+  left:0;
+  z-index: 1;
+}
