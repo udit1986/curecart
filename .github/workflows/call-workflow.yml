@@ -5,11 +5,11 @@ on:
     branches:
       - main
 
-workflow_dispatch:
-    inputs:
-      name:
-        description: "working directory path"
-        default: "."
+  workflow_dispatch:
+      inputs:
+        name:
+          description: "working directory path"
+          default: "."
 
 jobs:
   call-workflow:
