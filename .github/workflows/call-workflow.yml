@@ -6,10 +6,10 @@ on:
       - main
 
   workflow_dispatch:
-      inputs:
-        name:
-          description: "working directory path"
-          default: "."
+    inputs:
+      name:
+        description: "working directory path"
+        default: "."
 
 jobs:
   call-workflow:
