@@ -1,0 +1,44 @@
+name: build-web
+on:
+  workflow_call:
+    inputs:
+      working_directory:
+        type: string
+        default: 'src'
+        
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Build npm project
+        working-directory: ${{ inputs.working_directory }}
+        run: |
+          npm install
+          npm run build
+      - name: Check linting issues
+        working-directory: ${{ inputs.working_directory }}
+        run: npm run lint --if-present
+
+      - name: Audit npm packages
+        working-directory: ${{ inputs.working_directory }}
+        id: npm-audit
+        run: |
+          AUDIT_LOG="$(npm audit)"
+          echo "::set-output name=AUDIT_LOG::$AUDIT_LOG"
+        continue-on-error: true
+
+      - name: Add PR comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `${{ steps.npm-audit.outputs.AUDIT_LOG }}`
+            })
