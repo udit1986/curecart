@@ -4,7 +4,7 @@ on:
     inputs:
       working_directory:
         type: string
-        default: 'src'
+        default: '.'
         
 jobs:
   build-project:
