@@ -13,6 +13,6 @@ workflow_dispatch:
 
 jobs:
   call-workflow:
-    uses: octo-org/example-repo/.github/workflows/pr-build.yml@v1
+    uses: ./.github/workflows/pr-build.yml
     with:
       working_directory: ./
