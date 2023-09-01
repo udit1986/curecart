@@ -28,8 +28,12 @@ jobs:
         working-directory: ${{ inputs.working_directory }}
         id: npm-audit
         run: |
-          AUDIT_LOG="$(npm audit)"
+          AUDIT_LOG=$(((npm audit) 2>&1) || true)
+          AUDIT_LOG=${AUDIT_LOG//\`}
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "AUDIT_LOG<<$EOF" >> $GITHUB_OUTPUT
           echo "$AUDIT_LOG" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
         continue-on-error: true
 
       - name: Add PR comment
